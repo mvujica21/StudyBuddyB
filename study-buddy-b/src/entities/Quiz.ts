@@ -13,7 +13,6 @@ import { User } from "./User";
 import { QuizType } from "./QuizType";
 import { Subject } from "./Subject";
 
-@Index("quiz_pkey", ["id"], { unique: true })
 @Entity("quiz", { schema: "public" })
 export class Quiz {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

@@ -12,7 +12,6 @@ import { QuestionType } from "./QuestionType";
 import { Quiz } from "./Quiz";
 import { QuestionandanswerLog } from "./QuestionandanswerLog";
 
-@Index("question_pkey", ["id"], { unique: true })
 @Entity("question", { schema: "public" })
 export class Question {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

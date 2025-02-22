@@ -8,7 +8,6 @@ import {
 import { Game } from "./Game";
 import { Quiz } from "./Quiz";
 
-@Index("quiz_type_pkey", ["id"], { unique: true })
 @Entity("quiz_type", { schema: "public" })
 export class QuizType {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

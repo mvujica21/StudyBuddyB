@@ -11,7 +11,6 @@ import { QuizType } from "./QuizType";
 import { Quiz } from "./Quiz";
 import { GameResult } from "./GameResult";
 
-@Index("game_pkey", ["id"], { unique: true })
 @Entity("game", { schema: "public" })
 export class Game {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

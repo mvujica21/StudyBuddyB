@@ -8,7 +8,6 @@ import {
 } from "typeorm";
 import { User } from "./User";
 
-@Index("notification_pkey", ["id"], { unique: true })
 @Entity("notification", { schema: "public" })
 export class Notification {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

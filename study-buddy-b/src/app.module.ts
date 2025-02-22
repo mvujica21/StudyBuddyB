@@ -18,7 +18,7 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [],
+      entities: [__dirname + '/entities/*.{js,ts}'],
       synchronize: process.env.TYPEORM_SYNC === 'true',
       autoLoadEntities: true,
     }),

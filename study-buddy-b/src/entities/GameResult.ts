@@ -9,7 +9,6 @@ import {
 import { Game } from "./Game";
 import { User } from "./User";
 
-@Index("game_result_pkey", ["id"], { unique: true })
 @Entity("game_result", { schema: "public" })
 export class GameResult {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

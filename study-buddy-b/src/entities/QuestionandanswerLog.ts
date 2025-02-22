@@ -9,7 +9,6 @@ import {
 import { Question } from "./Question";
 import { User } from "./User";
 
-@Index("questionandanswer_log_pkey", ["id"], { unique: true })
 @Entity("questionandanswer_log", { schema: "public" })
 export class QuestionandanswerLog {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

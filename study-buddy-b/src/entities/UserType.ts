@@ -7,7 +7,6 @@ import {
 } from "typeorm";
 import { User } from "./User";
 
-@Index("user_type_pkey", ["id"], { unique: true })
 @Entity("user_type", { schema: "public" })
 export class UserType {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

@@ -7,7 +7,6 @@ import {
 } from "typeorm";
 import { Quiz } from "./Quiz";
 
-@Index("subject_pkey", ["id"], { unique: true })
 @Entity("subject", { schema: "public" })
 export class Subject {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

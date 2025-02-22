@@ -7,7 +7,6 @@ import {
 } from "typeorm";
 import { UserBadge } from "./UserBadge";
 
-@Index("badge_pkey", ["id"], { unique: true })
 @Entity("badge", { schema: "public" })
 export class Badge {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

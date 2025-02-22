@@ -16,7 +16,6 @@ import { UserType } from "./UserType";
 import { UserBadge } from "./UserBadge";
 import { UserGroup } from "./UserGroup";
 
-@Index("user_pkey", ["id"], { unique: true })
 @Entity("user", { schema: "public" })
 export class User {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

@@ -10,7 +10,6 @@ import {
 import { GroupUser } from "./GroupUser";
 import { User } from "./User";
 
-@Index("user_group_pkey", ["id"], { unique: true })
 @Entity("user_group", { schema: "public" })
 export class UserGroup {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })

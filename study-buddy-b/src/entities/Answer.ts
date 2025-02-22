@@ -8,7 +8,6 @@ import {
 } from 'typeorm';
 import { Question } from './Question';
 
-@Index('answer_pkey', ['id'], { unique: true })
 @Entity('answer', { schema: 'public' })
 export class Answer {
   @PrimaryGeneratedColumn({ type: 'integer', name: 'id' })
