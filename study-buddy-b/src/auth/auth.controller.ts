@@ -9,7 +9,7 @@ export class AuthController {
     @Post('register')
     async register(@Body() body: RegisterDto) {
         const result = await this.authService.register(body);
-        return { message: "Registration successful", data: result };
+        return { message: "Registration successful" };
 
     }
 }
