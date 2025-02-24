@@ -12,25 +12,25 @@ import { User } from "./User";
 @Entity("game_result", { schema: "public" })
 export class GameResult {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })
-  id: number;
+  id!: number;
 
   @Column("integer", { name: "score" })
-  score: number;
+  score!: number;
 
   @Column("integer", { name: "rank", nullable: true })
-  rank: number | null;
+  rank!: number | null;
 
   @Column("timestamp without time zone", {
     name: "completed_at",
     nullable: true,
   })
-  completedAt: Date | null;
+  completedAt!: Date | null;
 
   @ManyToOne(() => Game, (game) => game.gameResults)
   @JoinColumn([{ name: "game_id", referencedColumnName: "id" }])
-  game: Game;
+  game!: Game;
 
   @ManyToOne(() => User, (user) => user.gameResults)
   @JoinColumn([{ name: "user_id", referencedColumnName: "id" }])
-  user: User;
+  user!: User;
 }

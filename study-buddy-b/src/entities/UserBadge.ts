@@ -6,19 +6,19 @@ import { User } from "./User";
 @Entity("user_badge", { schema: "public" })
 export class UserBadge {
   @Column("integer", { primary: true, name: "user_id" })
-  userId: number;
+  userId!: number;
 
   @Column("integer", { primary: true, name: "badge_id" })
-  badgeId: number;
+  badgeId!: number;
 
   @Column("timestamp without time zone", { name: "awarded_at", nullable: true })
-  awardedAt: Date | null;
+  awardedAt!: Date | null;
 
   @ManyToOne(() => Badge, (badge) => badge.userBadges)
   @JoinColumn([{ name: "badge_id", referencedColumnName: "id" }])
-  badge: Badge;
+  badge!: Badge;
 
   @ManyToOne(() => User, (user) => user.userBadges)
   @JoinColumn([{ name: "user_id", referencedColumnName: "id" }])
-  user: User;
+  user!: User;
 }

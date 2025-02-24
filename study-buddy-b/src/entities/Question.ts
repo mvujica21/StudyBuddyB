@@ -15,31 +15,31 @@ import { QuestionandanswerLog } from "./QuestionandanswerLog";
 @Entity("question", { schema: "public" })
 export class Question {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })
-  id: number;
+  id!: number;
 
   @Column("character varying", { name: "content", length: 255 })
-  content: string;
+  content!: string;
 
   @Column("integer", { name: "difficulty", nullable: true })
-  difficulty: number | null;
+  difficulty!: number | null;
 
   @Column("timestamp without time zone", { name: "created_at" })
-  createdAt: Date;
+  createdAt!: Date;
 
   @OneToMany(() => Answer, (answer) => answer.question)
-  answers: Answer[];
+  answers!: Answer[];
 
   @ManyToOne(() => QuestionType, (questionType) => questionType.questions)
   @JoinColumn([{ name: "question_type_id", referencedColumnName: "id" }])
-  questionType: QuestionType;
+  questionType!: QuestionType;
 
   @ManyToOne(() => Quiz, (quiz) => quiz.questions)
   @JoinColumn([{ name: "quiz_id", referencedColumnName: "id" }])
-  quiz: Quiz;
+  quiz!: Quiz;
 
   @OneToMany(
     () => QuestionandanswerLog,
     (questionandanswerLog) => questionandanswerLog.question
   )
-  questionandanswerLogs: QuestionandanswerLog[];
+  questionandanswerLogs!: QuestionandanswerLog[];
 }

@@ -11,14 +11,14 @@ import { Quiz } from "./Quiz";
 @Entity("quiz_type", { schema: "public" })
 export class QuizType {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })
-  id: number;
+  id!: number;
 
   @Column("character varying", { name: "name", length: 255 })
-  name: string;
+  name!: string;
 
   @OneToMany(() => Game, (game) => game.gameMode)
-  games: Game[];
+  games!: Game[];
 
   @OneToMany(() => Quiz, (quiz) => quiz.quizType)
-  quizzes: Quiz[];
+  quizzes!: Quiz[];
 }
