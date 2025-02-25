@@ -9,19 +9,18 @@ export class AuthController {
     constructor(private authService: AuthService) { }
 
     @Post('register')
-    async register(@Body() body: RegisterDto) {
-        const result = await this.authService.register(body);
-        return { message: "Registration successful" };
-
+    async register(@Body() body: RegisterDto): Promise<{ message: string }> {
+        await this.authService.register(body);
+        return { message: 'Registration successful' };
     }
     @Post('login')
-    async login(@Body() body: LoginDto) {
+    async login(@Body() body: LoginDto): Promise<{ message: string, JWT: string }> {
         const result = await this.authService.login(body);
-        return { message: "Login successful", JWT: result };
+        return { message: 'Login successful', JWT: result.access_token };
     }
     @Get('protected')
     @UseGuards(JwtAuthGuard)
-    async protected() {
-        return { message: "You are authorized to view this page" };
+    protected(): { message: string } {
+        return { message: 'You are authorized to view this page' };
     }
 }

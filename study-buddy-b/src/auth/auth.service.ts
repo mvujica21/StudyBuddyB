@@ -19,7 +19,7 @@ export class AuthService {
         private readonly userRepository: Repository<User>,
         private readonly jwtService: JwtService,
     ) { }
-    async register(registerDto: RegisterDto): Promise<any> {
+    async register(registerDto: RegisterDto): Promise<User> {
         const { email, password, confirmPassword, username } = registerDto;
         if (password !== confirmPassword) {
             throw new BadRequestException('Passwords do not match');
