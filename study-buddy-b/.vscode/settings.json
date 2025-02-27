@@ -10,4 +10,6 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "always"
     },
+    "eslint.run": "onType",
+    "eslint.lintTask.enable": true
 }

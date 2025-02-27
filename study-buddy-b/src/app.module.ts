@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { ProfileModule } from './profile/profile.module';
+import { GroupsModule } from './groups/groups.module';
 
 @Module({
   imports: [
@@ -22,7 +24,9 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: process.env.TYPEORM_SYNC === 'true',
       autoLoadEntities: true,
     }),
-    AuthModule],
+    AuthModule,
+    ProfileModule,
+    GroupsModule],
   controllers: [AppController],
   providers: [AppService],
 })
