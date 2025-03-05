@@ -1,7 +1,6 @@
 import {
   Column,
   Entity,
-  Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
@@ -38,6 +37,9 @@ export class User {
 
   @Column("integer", { name: "xp", nullable: true })
   xp!: number | null;
+
+  @Column("bytea", { name: "profile_image", nullable: true })
+  profile_image!: Buffer | null;
 
   @OneToMany(() => GameResult, (gameResult) => gameResult.user)
   gameResults!: GameResult[];
