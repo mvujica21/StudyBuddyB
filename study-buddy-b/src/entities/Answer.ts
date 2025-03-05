@@ -11,18 +11,18 @@ import { Question } from './Question';
 @Entity('answer', { schema: 'public' })
 export class Answer {
   @PrimaryGeneratedColumn({ type: 'integer', name: 'id' })
-  id: number;
+  id!: number;
 
   @Column('character varying', { name: 'content', length: 255 })
-  content: string;
+  content!: string;
 
   @Column('boolean', { name: 'is_correct', nullable: true })
-  isCorrect: boolean | null;
+  isCorrect!: boolean | null;
 
   @Column('timestamp without time zone', { name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @ManyToOne(() => Question, (question) => question.answers)
   @JoinColumn([{ name: 'question_id', referencedColumnName: 'id' }])
-  question: Question;
+  question!: Question;
 }

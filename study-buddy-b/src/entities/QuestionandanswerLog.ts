@@ -12,19 +12,19 @@ import { User } from "./User";
 @Entity("questionandanswer_log", { schema: "public" })
 export class QuestionandanswerLog {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })
-  id: number;
+  id!: number;
 
   @Column("boolean", { name: "was_correct" })
-  wasCorrect: boolean;
+  wasCorrect!: boolean;
 
   @Column("timestamp without time zone", { name: "answered_at" })
-  answeredAt: Date;
+  answeredAt!: Date;
 
   @ManyToOne(() => Question, (question) => question.questionandanswerLogs)
   @JoinColumn([{ name: "question_id", referencedColumnName: "id" }])
-  question: Question;
+  question!: Question;
 
   @ManyToOne(() => User, (user) => user.questionandanswerLogs)
   @JoinColumn([{ name: "user_id", referencedColumnName: "id" }])
-  user: User;
+  user!: User;
 }

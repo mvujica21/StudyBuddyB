@@ -1,7 +1,6 @@
 import {
   Column,
   Entity,
-  Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
@@ -19,51 +18,54 @@ import { UserGroup } from "./UserGroup";
 @Entity("user", { schema: "public" })
 export class User {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })
-  id: number;
+  id!: number;
 
   @Column("character varying", { name: "username", length: 255 })
-  username: string;
+  username!: string;
 
   @Column("character varying", { name: "email", length: 255 })
-  email: string;
+  email!: string;
 
   @Column("character varying", { name: "password_hash", length: 255 })
-  passwordHash: string;
+  passwordHash!: string;
 
   @Column("timestamp without time zone", { name: "created_at" })
-  createdAt: Date;
+  createdAt!: Date;
 
   @Column("timestamp without time zone", { name: "updated_at", nullable: true })
-  updatedAt: Date | null;
+  updatedAt!: Date | null;
 
   @Column("integer", { name: "xp", nullable: true })
-  xp: number | null;
+  xp!: number | null;
+
+  @Column("bytea", { name: "profile_image", nullable: true })
+  profile_image!: Buffer | null;
 
   @OneToMany(() => GameResult, (gameResult) => gameResult.user)
-  gameResults: GameResult[];
+  gameResults!: GameResult[];
 
   @OneToMany(() => GroupUser, (groupUser) => groupUser.user)
-  groupUsers: GroupUser[];
+  groupUsers!: GroupUser[];
 
   @OneToMany(() => Notification, (notification) => notification.user)
-  notifications: Notification[];
+  notifications!: Notification[];
 
   @OneToMany(
     () => QuestionandanswerLog,
     (questionandanswerLog) => questionandanswerLog.user
   )
-  questionandanswerLogs: QuestionandanswerLog[];
+  questionandanswerLogs!: QuestionandanswerLog[];
 
   @OneToMany(() => Quiz, (quiz) => quiz.createdBy)
-  quizzes: Quiz[];
+  quizzes!: Quiz[];
 
   @ManyToOne(() => UserType, (userType) => userType.users)
   @JoinColumn([{ name: "user_type_id", referencedColumnName: "id" }])
-  userType: UserType;
+  userType!: UserType;
 
   @OneToMany(() => UserBadge, (userBadge) => userBadge.user)
-  userBadges: UserBadge[];
+  userBadges!: UserBadge[];
 
   @OneToMany(() => UserGroup, (userGroup) => userGroup.createdBy)
-  userGroups: UserGroup[];
+  userGroups!: UserGroup[];
 }

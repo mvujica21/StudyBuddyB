@@ -3,17 +3,17 @@ import { IsEmail, IsEmpty, IsNotEmpty, IsString, IsStrongPassword } from "class-
 export class RegisterDto {
     @IsEmail()
     @IsNotEmpty()
-    email: string;
+    email!: string;
 
     @IsStrongPassword()
     @IsNotEmpty()
-    password: string;
+    password!: string;
 
     @IsNotEmpty()
     @IsStrongPassword()
-    confirmPassword: string;
+    confirmPassword!: string;
 
     @IsNotEmpty()
     @IsString()
-    username: string;
+    username!: string;
 }

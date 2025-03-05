@@ -10,14 +10,14 @@ import { Question } from "./Question";
 @Entity("question_type", { schema: "public" })
 export class QuestionType {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })
-  id: number;
+  id!: number;
 
   @Column("character varying", { name: "name", length: 255 })
-  name: string;
+  name!: string;
 
   @Column("character varying", { name: "description", length: 255 })
-  description: string;
+  description!: string;
 
   @OneToMany(() => Question, (question) => question.questionType)
-  questions: Question[];
+  questions!: Question[];
 }

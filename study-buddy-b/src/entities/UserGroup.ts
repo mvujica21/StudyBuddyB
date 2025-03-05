@@ -13,25 +13,25 @@ import { User } from "./User";
 @Entity("user_group", { schema: "public" })
 export class UserGroup {
   @PrimaryGeneratedColumn({ type: "integer", name: "id" })
-  id: number;
+  id!: number;
 
   @Column("character varying", { name: "name", length: 255 })
-  name: string;
+  name!: string;
 
   @Column("character varying", {
     name: "description",
     nullable: true,
     length: 255,
   })
-  description: string | null;
+  description!: string | null;
 
   @Column("timestamp without time zone", { name: "created_at", nullable: true })
-  createdAt: Date | null;
+  createdAt!: Date | null;
 
   @OneToMany(() => GroupUser, (groupUser) => groupUser.group)
-  groupUsers: GroupUser[];
+  groupUsers!: GroupUser[];
 
   @ManyToOne(() => User, (user) => user.userGroups)
   @JoinColumn([{ name: "created_by_id", referencedColumnName: "id" }])
-  createdBy: User;
+  createdBy!: User;
 }
