@@ -27,4 +27,7 @@ export class GroupsService {
         }
         return groupData;
     }
+    async getAllGroups():Promise<UserGroup[]>{
+        return await this.userGroupRepository.find();
+    }
 }

@@ -13,4 +13,9 @@ export class GroupsController {
     async getGroupData(@Query('groupId') groupId:number): Promise<UserGroup>{
         return await this.groupsService.getGroupData(groupId);
     }
+    @Get("getAllGroups")
+    @UseGuards(JwtAuthGuard)
+    async getallGroups(): Promise<UserGroup[]>{
+        return await this.groupsService.getAllGroups();
+    }
 }
