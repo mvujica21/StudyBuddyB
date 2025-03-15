@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GroupUser } from 'src/entities/GroupUser';
 import { UserGroup } from 'src/entities/UserGroup';
@@ -19,5 +19,12 @@ export class GroupsService {
             .where('groupUser.userId = :userId', { userId })
             .getMany();
         return groupUsers.map((groupUser) => groupUser.group);
+    }
+    async getGroupData(groupId: number): Promise<UserGroup>{
+        const groupData = await this.userGroupRepository.findOne({where: {id: groupId}})
+        if(!groupData){
+            throw new NotFoundException()
+        }
+        return groupData;
     }
 }
