@@ -14,6 +14,7 @@ import { Quiz } from "./Quiz";
 import { UserType } from "./UserType";
 import { UserBadge } from "./UserBadge";
 import { UserGroup } from "./UserGroup";
+import { GroupInvitation } from "./GroupInvitation";
 
 @Entity("user", { schema: "public" })
 export class User {
@@ -68,4 +69,7 @@ export class User {
 
   @OneToMany(() => UserGroup, (userGroup) => userGroup.createdBy)
   userGroups!: UserGroup[];
+
+  @OneToMany(() => GroupInvitation, (invitation) => invitation.createdBy)
+  createdInvitations!: GroupInvitation[];
 }

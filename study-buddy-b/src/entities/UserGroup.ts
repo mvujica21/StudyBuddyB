@@ -1,7 +1,6 @@
 import {
   Column,
   Entity,
-  Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
@@ -9,6 +8,7 @@ import {
 } from "typeorm";
 import { GroupUser } from "./GroupUser";
 import { User } from "./User";
+import { GroupInvitation } from "./GroupInvitation";
 
 @Entity("user_group", { schema: "public" })
 export class UserGroup {
@@ -34,4 +34,7 @@ export class UserGroup {
   @ManyToOne(() => User, (user) => user.userGroups)
   @JoinColumn([{ name: "created_by_id", referencedColumnName: "id" }])
   createdBy!: User;
+  
+  @OneToMany(() => GroupInvitation, (invitation) => invitation.group)
+  invitations!: GroupInvitation[];
 }
