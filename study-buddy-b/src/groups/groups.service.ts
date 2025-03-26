@@ -37,7 +37,14 @@ export class GroupsService {
             name, description, createdBy: {id: createdBy}, createdAt: new Date()
         });
         try {
-            await this.userGroupRepository.save(group);
+            const savedGroup = await this.userGroupRepository.save(group);
+            const clubMember = this.groupUserRepository.create({
+                groupId: savedGroup.id,
+                userId: createdBy,
+                joinedAt: new Date(),
+                groupRole: {id: 1}
+            });
+            await this.groupUserRepository.save(clubMember);
             return "Group sucesfully created!";
         } catch (error) {
             throw new InternalServerErrorException(error);
